@@ -110,28 +110,25 @@ contactForm.addEventListener('submit', async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 
-  try {
-    // EmailJS integration
+  // EmailJS integration
     const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        service_id: 'service_aq2gp5a',
-        template_id: 'template_oqxfb0j',
-        user_id: 'RfqOoHLvU2nxCNuCd',
+        service_id: 'service_1pq81k7',
+        template_id: 'template_j71at68',
+        user_id: '8WjY6GOwweLCPe8L6',
         template_params: {
-          from_name: data.name,
-          from_email: data.email,
+          name: data.name,
+          email: data.email,
           phone: data.phone || 'Not provided',
           service: data.service,
-          message: data.message,
-          to_email: 'mloganf18@gmail.com'
+          message: data.message
         }
       })
     });
-
     if (response.ok) {
       alert('Thank you for your message! Captain Max will respond within 24 hours.');
       contactForm.reset();
